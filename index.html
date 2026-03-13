@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام إدارة المبيعات</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-shapes">
+        <div class="shape shape1"></div>
+        <div class="shape shape2"></div>
+    </div>
+
+    <div class="glass-container">
+        
+        <main class="content-area">
+            <div id="dashboard" class="tab-content active-tab">
+                <h3>لوحة التحكم (Dashboard)</h3>
+                <p>هنا سيتم عرض ملخص المشاريع، المبيعات اليومية، والأقساط.</p>
+            </div>
+            <div id="projects" class="tab-content">
+                <h3>المشاريع (Projects)</h3>
+                <p>قائمة المشاريع وإضافة مشروع جديد ستكون هنا.</p>
+            </div>
+            <div id="customers" class="tab-content">
+                <h3>العملاء (Customers)</h3>
+                <p>إدارة بيانات العملاء ومبيعاتهم.</p>
+            </div>
+            </main>
+
+        <nav class="bottom-nav">
+            <ul>
+                <li class="active" onclick="showTab('dashboard', this)">الرئيسية</li>
+                <li onclick="showTab('projects', this)">المشاريع</li>
+                <li onclick="showTab('customers', this)">العملاء</li>
+                <li onclick="showTab('invoices', this)">الفواتير</li>
+                <li onclick="showTab('quotes', this)">العروض</li>
+                <li onclick="showTab('expenses', this)">الصرفيات</li>
+                <li onclick="showTab('reports', this)">التقارير</li>
+            </ul>
+        </nav>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
