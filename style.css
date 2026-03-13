@@ -8,14 +8,14 @@
 
 body {
     min-height: 100vh;
-    background-color: #f3f4f6;
+    background-color: #e0f2fe; /* لون خلفية قريب من الصورة */
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
 }
 
-/* الأشكال الخلفية */
+/* الأشكال الخلفية للتدرج اللوني */
 .background-shapes {
     position: absolute;
     width: 100vw;
@@ -32,7 +32,7 @@ body {
 .shape1 {
     width: 400px;
     height: 400px;
-    background-color: #4facfe;
+    background-color: #38bdf8; /* لون أزرق فاتح */
     top: -10%;
     left: 10%;
 }
@@ -40,30 +40,43 @@ body {
 .shape2 {
     width: 500px;
     height: 500px;
-    background-color: #00f2fe;
+    background-color: #22d3ee; /* لون سماوي */
     bottom: -10%;
-    right: 5%;
+    right: -10%;
 }
 
-/* الحاوية الزجاجية */
+/* الحاوية الزجاجية (مصممة كبطاقة هاتف) */
 .glass-container {
-    width: 95%; /* تكبير العرض ليناسب الشاشات */
-    height: 90vh;
-    background: rgba(255, 255, 255, 0.4);
-    border-radius: 20px;
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    width: 90%;
+    max-width: 450px; /* تحديد أقصى عرض لتبدو كشاشة هاتف حتى على الكمبيوتر */
+    height: 85vh; /* ارتفاع مناسب للشاشة */
+    background: rgba(255, 255, 255, 0.35);
+    border-radius: 25px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.5);
-    position: relative; /* مهم جداً لتثبيت الشريط السفلي بداخله */
+    position: relative;
     overflow: hidden;
 }
 
 /* منطقة عرض المحتوى */
 .content-area {
-    height: calc(100% - 70px); /* 100% من الحاوية ناقص ارتفاع الشريط السفلي */
-    padding: 30px;
-    overflow-y: auto; /* السماح بالتمرير إذا زاد المحتوى */
+    height: calc(100% - 70px);
+    padding: 30px 20px;
+    overflow-y: auto;
+    color: #111;
+}
+
+.content-area h3 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.content-area p {
+    font-size: 0.95rem;
+    color: #333;
+    line-height: 1.6;
 }
 
 /* إخفاء التبويبات غير النشطة */
@@ -82,41 +95,51 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* --- تصميم شريط التبويبات السفلي الجديد --- */
+/* --- تصميم شريط التبويبات السفلي --- */
 .bottom-nav {
-    position: absolute; /* تثبيت داخل الحاوية الزجاجية */
+    position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 70px; /* ارتفاع الشريط */
-    background: rgba(255, 255, 255, 0.3);
-    border-top: 1px solid rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(10px);
+    height: 70px;
+    background: rgba(255, 255, 255, 0.4);
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(15px);
 }
 
 .bottom-nav ul {
-    display: flex; /* ترتيب العناصر أفقياً */
-    justify-content: space-around; /* توزيع المسافات بالتساوي بين العناصر */
-    align-items: center; /* توسيط العناصر عمودياً */
+    display: flex;
+    align-items: center;
     height: 100%;
     list-style: none;
+    overflow-x: auto; /* السماح بالتمرير الأفقي للأزرار */
+    scroll-behavior: smooth;
+    padding: 0 10px;
+    gap: 8px; /* مسافة بين الأزرار */
+    
+    /* إخفاء شريط التمرير الجمالي */
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+}
+
+.bottom-nav ul::-webkit-scrollbar {
+    display: none; /* إخفاء شريط التمرير في متصفحات كروم وسفاري */
 }
 
 .bottom-nav ul li {
-    padding: 10px 15px;
+    padding: 8px 18px;
     cursor: pointer;
-    font-weight: bold;
+    font-weight: 600;
     font-size: 14px;
-    color: #555;
-    border-radius: 12px;
+    color: #444;
+    border-radius: 15px; /* حواف دائرية مثل الصورة */
+    white-space: nowrap; /* منع نزول الكلمة لسطر جديد */
     transition: all 0.3s ease;
 }
 
-/* تصميم العنصر عند التمرير أو عند تفعيله */
-.bottom-nav ul li:hover, 
+/* تصميم الزر النشط (كما في الصورة) */
 .bottom-nav ul li.active {
-    background: rgba(255, 255, 255, 0.8);
-    color: #111;
-    transform: translateY(-5px); /* رفع العنصر قليلاً للأعلى */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* ظل خفيف للزر النشط */
+    background: #ffffff; /* خلفية بيضاء نقية */
+    color: #000000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* ظل خفيف للزر */
 }
