@@ -1,5 +1,4 @@
 // دالة لتغيير التبويب المعروض
-// تستقبل tabId (اسم القسم) و clickedElement (زر القائمة الذي تم الضغط عليه)
 function showTab(tabId, clickedElement) {
     
     // 1. إخفاء جميع أقسام المحتوى
@@ -8,7 +7,7 @@ function showTab(tabId, clickedElement) {
         tab.classList.remove('active-tab');
     });
 
-    // 2. إظهار القسم المطلوب
+    // 2. إظهار القسم المطلوب بناءً على الـ ID
     const selectedTab = document.getElementById(tabId);
     if (selectedTab) {
         selectedTab.classList.add('active-tab');
@@ -20,8 +19,11 @@ function showTab(tabId, clickedElement) {
         item.classList.remove('active');
     });
 
-    // 4. إضافة التفعيل (التظليل) للزر الذي تم الضغط عليه للتو
+    // 4. إضافة التفعيل للزر الذي تم الضغط عليه
     if (clickedElement) {
         clickedElement.classList.add('active');
+        
+        // كود إضافي صغير: جعل الزر النشط يتمركز في الشاشة عند النقر عليه (مفيد في الهواتف)
+        clickedElement.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
     }
 }
